@@ -7,6 +7,7 @@ class PhoneForm extends Component {
     }
     handleChange = (e) => {
         this.setState({
+            // input 태그에서 발생한 이벤트의 위치와 값을 나타낸다.
             [e.target.name]: e.target.value
         })
         console.log([e.target.name])
@@ -14,9 +15,10 @@ class PhoneForm extends Component {
     handleSubmit = (e) => {
         // 페이지 리로딩 방지
         e.preventDefault();
-        // 상태값을 onCreate를 통하여 부모에게 전달 
+        // 상태값을 onCreate를 통하여 부모(app.js)에게 전달
         // onCreate는 App.js에 있으며, parameter를 제공한다.
-        this.props.onCreate(this.state);
+        this.props.onCreate(this.state); // onCreate는 props임. handleCreate(this.state) 호출
+
         // 상태 초기화
         this.setState({
             name: '',
@@ -29,6 +31,8 @@ class PhoneForm extends Component {
                 <input 
                     placeholder="이름"
                     value = {this.state.name}
+                    
+                    // 값이 변화면 handleChange 함수를 불러옴
                     onChange = {this.handleChange}
                     name = "name"
                 />
